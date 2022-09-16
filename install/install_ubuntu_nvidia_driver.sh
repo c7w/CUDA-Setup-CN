@@ -8,5 +8,5 @@ wget https://developer.download.nvidia.com/compute/cuda/repos/$distribution/x86_
 mv /tmp/cuda-$distribution.pin /etc/apt/preferences.d/cuda-repository-pin-600
 apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/$distribution/x86_64/3bf863cc.pub
 echo "deb http://developer.download.nvidia.com/compute/cuda/repos/$distribution/x86_64 /" | tee /etc/apt/sources.list.d/cuda.list
-apt-get update
+apt-get -o Acquire::http::proxy="$HTTP_PROXY" update
 apt-get -y -o Acquire::http::proxy="$HTTP_PROXY" install cuda-drivers
